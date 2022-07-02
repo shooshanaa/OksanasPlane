@@ -50,7 +50,7 @@ public class SeatController {
     public String chooseEconomySeat() {
 
         String[] availableEconomySeats = economyClass.toArray(new String[0]);
-        String choice = (String) JOptionPane.showInputDialog(
+        String seatNumber = (String) JOptionPane.showInputDialog(
                 null,
                 "Please choose a seat: ",
                 "Available seats: ",
@@ -60,15 +60,16 @@ public class SeatController {
                 availableEconomySeats[0]
         );
 
-        this.economyClass.remove(availableEconomySeats[0]);
-        return "Seat " + availableEconomySeats[0] + " booked successfully";
+
+        this.economyClass.remove(seatNumber);
+        return "Seat " + seatNumber + " booked successfully";
 
     }
 
     public String chooseBusinessSeat() {
 
         String[] availableBusinessSeats = businessClass.toArray(new String[0]);
-        String choice = (String) JOptionPane.showInputDialog(
+        String seatNumber = (String) JOptionPane.showInputDialog(
                 null,
                 "Please choose a seat: ",
                 "Available seats: ",
@@ -78,8 +79,24 @@ public class SeatController {
                 availableBusinessSeats[0]
         );
 
-        this.businessClass.remove(availableBusinessSeats[0]);
-        return "Seat " + availableBusinessSeats[0] + " booked successfully";
+        this.businessClass.remove(seatNumber);
+        return "Seat " + seatNumber + " booked successfully";
+    }
+
+    public String getRandomSeatInBusinessClass() {
+        String[] availableBusinessSeats = businessClass.toArray(new String[0]);
+        String randomSeatNumber = availableBusinessSeats[0];
+
+        this.businessClass.remove(randomSeatNumber);
+        return "Seat " + randomSeatNumber + " booked successfully";
+    }
+
+    public String getRandomSeatInEconomyClass() {
+        String[] availableEconomySeats = economyClass.toArray(new String[0]);
+        String randomSeatNumber = availableEconomySeats[0];
+
+        this.economyClass.remove(randomSeatNumber);
+        return "Seat " + randomSeatNumber + " booked successfully";
     }
 
 }
