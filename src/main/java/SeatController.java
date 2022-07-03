@@ -9,13 +9,11 @@ public class SeatController {
     public boolean economyTicket;
 
     ArrayList<String> businessClass;
-
     {
-        businessClass = new ArrayList<>(Arrays.asList("1a", "1b", "1c", "1d", "2a", "2b", "2c", "2d"));
+        businessClass = new ArrayList<>(Arrays.asList("1A", "1B", "1C", "1D", "2A", "2B", "2C", "2D"));
     }
 
     ArrayList<String> economyClass;
-
     {
         economyClass = new ArrayList<>(Arrays.asList("3A", "3B", "3C", "3D", "4A", "4B", "4C", "4D",
                 "5A", "5B", "5C", "5D", "6A", "6B", "6C", "6D"));
@@ -35,7 +33,6 @@ public class SeatController {
         return null;
     }
 
-
     public String economySeatController(boolean economyTicket) {
         this.economyTicket = economyTicket;
 
@@ -45,25 +42,6 @@ public class SeatController {
             return "Something went wrong: " + e.getMessage();
         }
         return null;
-    }
-
-    public String chooseEconomySeat() {
-
-        String[] availableEconomySeats = economyClass.toArray(new String[0]);
-        String seatNumber = (String) JOptionPane.showInputDialog(
-                null,
-                "Please choose a seat: ",
-                "Available seats: ",
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                availableEconomySeats,
-                availableEconomySeats[0]
-        );
-
-
-        this.economyClass.remove(seatNumber);
-        return "Seat " + seatNumber + " booked successfully";
-
     }
 
     public String chooseBusinessSeat() {
@@ -80,7 +58,27 @@ public class SeatController {
         );
 
         this.businessClass.remove(seatNumber);
-        return "Seat " + seatNumber + " booked successfully";
+        System.out.println("Seat " + seatNumber + " booked successfully");
+        return seatNumber;
+
+    }
+
+    public String chooseEconomySeat() {
+
+        String[] availableEconomySeats = economyClass.toArray(new String[0]);
+        String seatNumber = (String) JOptionPane.showInputDialog(
+                null,
+                "Please choose a seat: ",
+                "Available seats: ",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                availableEconomySeats,
+                availableEconomySeats[0]
+        );
+
+        this.economyClass.remove(seatNumber);
+        System.out.println("Seat " + seatNumber + " booked successfully");
+        return seatNumber;
     }
 
     public String getRandomSeatInBusinessClass() {
@@ -88,7 +86,8 @@ public class SeatController {
         String randomSeatNumber = availableBusinessSeats[0];
 
         this.businessClass.remove(randomSeatNumber);
-        return "Seat " + randomSeatNumber + " booked successfully";
+        System.out.println("Random seat " + randomSeatNumber + " booked successfully");
+        return randomSeatNumber;
     }
 
     public String getRandomSeatInEconomyClass() {
@@ -96,7 +95,7 @@ public class SeatController {
         String randomSeatNumber = availableEconomySeats[0];
 
         this.economyClass.remove(randomSeatNumber);
-        return "Seat " + randomSeatNumber + " booked successfully";
+        System.out.println("Random seat " + randomSeatNumber + " booked successfully");
+        return randomSeatNumber;
     }
-
 }
