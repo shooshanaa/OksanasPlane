@@ -73,9 +73,7 @@ public class FileProcessing {
         System.out.println(randomSeatNumber + " was assigned successfully to " + fullNameRandom);
     }
 
-
     public void readFile1(){
-
      try {
         File file1 = new File(filepath1);
         Scanner myReader = new Scanner(file1);
@@ -86,14 +84,12 @@ public class FileProcessing {
         myReader.close();
     } catch (
     FileNotFoundException e) {
-        System.out.println("An error occurred.");
+        System.out.println("File was not found.");
         e.printStackTrace();
-
     }
     }
 
     public void readFile2(){
-
         try {
             File file2 = new File(filepath2);
             Scanner myReader = new Scanner(file2);
@@ -104,11 +100,8 @@ public class FileProcessing {
             myReader.close();
         } catch (
                 FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("File was not found.");
             e.printStackTrace();
-
         }
     }
-
-
 }

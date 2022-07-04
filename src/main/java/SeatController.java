@@ -60,7 +60,6 @@ public class SeatController {
         this.businessClass.remove(seatNumber);
         System.out.println("Seat " + seatNumber + " booked successfully");
         return seatNumber;
-
     }
 
     public String chooseEconomySeat() {
