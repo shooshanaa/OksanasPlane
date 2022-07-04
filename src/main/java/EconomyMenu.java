@@ -1,19 +1,18 @@
 import javax.swing.*;
 
 public class EconomyMenu {
-    SeatController seatController = new SeatController();
-    Passengers passenger = new Passengers();
 
+    SeatController seatController = new SeatController();
+    FileProcessing EconomyFile = new FileProcessing();
 
     public void displayEconomyMenu() {
-        JOptionPane.showConfirmDialog(null, "Economy class passenger," +
+        JOptionPane.showConfirmDialog(null, "Dear passenger," +
                 " please choose your next step: ");
         String option = JOptionPane.showInputDialog(null,
                 "Please choose the corresponding number from the menu \n\n" +
-
                         "1. Check available seats in Economy Class\n" +
-                        "2. Book an Economy class seat\n" +
-                        "3. Random seat\n" +
+                        "2. Book an Economy Class seat\n" +
+                        "3. Get a random seat\n" +
                         "4. Close / Exit\n");
 
         switch (option){
@@ -21,11 +20,14 @@ public class EconomyMenu {
                 this.processAvailableEconomySeats();
                 break;
             case "2":
-                System.out.println(seatController.chooseEconomySeat());
+                String seatNumber = seatController.chooseEconomySeat();
+                String fullName = JOptionPane.showInputDialog(null, "Please enter your full name");
+                EconomyFile.addEconomyPassenger(fullName, seatNumber);
                 break;
             case "3":
-                System.out.println(seatController.getRandomSeatInEconomyClass());
-
+                String randomSeatNumber = seatController.getRandomSeatInEconomyClass();
+                String fullNameRandom = JOptionPane.showInputDialog(null, "Please enter your full name");
+                EconomyFile.addEconomyPassengerRandom(fullNameRandom, randomSeatNumber);
                 break;
             case "4":
                 System.exit(0);
@@ -41,5 +43,4 @@ public class EconomyMenu {
         String economySeats = seatController.economySeatController(true);
         System.out.println(economySeats);
     }
-
 }

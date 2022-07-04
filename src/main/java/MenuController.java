@@ -1,12 +1,10 @@
 import javax.swing.*;
-import java.util.Scanner;
 
 public class MenuController {
+
     private final SeatController seatController = new SeatController();
     EconomyMenu economyMenu = new EconomyMenu();
     BusinessMenu businessMenu = new BusinessMenu();
-
-    Passengers passenger = new Passengers();
 
     public SeatController getSeatController() {
         return seatController;
@@ -19,17 +17,19 @@ public class MenuController {
     private void displayMainMenu() {
         JOptionPane.showConfirmDialog(null, "Welcome on board!");
         String option = JOptionPane.showInputDialog(null,
-                "Please choose the corresponding number from the menu \n\n" +
-                        "1. Insert your data\n" +
-
-                        "2. Close / Exit\n");
+                "Please select your ticket type\n\n" +
+                        "1. Business Class ticket\n" +
+                        "2. Economy Class ticket\n" +
+                        "3. Close / Exit\n");
 
         switch (option){
             case "1":
-                this.processPassengerData();
+                this.processBusinessClassTicket();
                 break;
-
             case "2":
+                this.processEconomyClassTicket();
+                break;
+            case "3":
                 System.exit(0);
                 break;
             default:
@@ -39,30 +39,20 @@ public class MenuController {
         displayMainMenu();
     }
 
-    private void processPassengerData() {
-        String fullName = JOptionPane.showInputDialog(null, "Enter your full name");
-        String ticketType = JOptionPane.showInputDialog(null, "Enter your ticket type");
-
-        if(ticketType.equals("economy")) {
-            economyMenu.displayEconomyMenu();
-        }
-        if(ticketType.equals("business")){
+    private void processBusinessClassTicket() {
+        int businessTicket = 1;
+        if(businessTicket == 1){
             businessMenu.displayBusinessMenu();
         }
-
     }
 
-
-   /*private void processSeatBooking() {
-       if (passenger.getTicketType().equals(seatController.economyTicket)) {
-           System.out.println(seatController.chooseEconomySeat());
-       } else if (passenger.getTicketType().equals(seatController.businessTicket)) {
-           System.out.println(seatController.chooseBusinessSeat());
-       }
-   }*/
-
-
+    private void processEconomyClassTicket() {
+        int economyTicket = 2;
+        if(economyTicket == 2){
+            economyMenu.displayEconomyMenu();
+        }
     }
+}
 
 
 
